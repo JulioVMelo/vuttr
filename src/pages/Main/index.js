@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Header, ActionsList } from './styles';
 import AddTool from '../../components/addTool';
 import SearchBar from '../../components/searchBar';
+import ListTool from '../../components/listTool/';
 
 const Main = () => (
   <Container>
@@ -14,6 +15,7 @@ const Main = () => (
       <SearchBar />
       <AddTool />
     </ActionsList>
+    <ListTool />
   </Container>  
 );
 

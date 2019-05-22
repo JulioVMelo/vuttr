@@ -32,11 +32,14 @@ export const Container = styled.div`
 `;
 
 export const SearchTags = styled.div`
+  display: flex;
+  align-items: baseline;
   margin-left: 20px;
 
   label {
     color: #170C3A;
     font-size: 20px;
     padding-left: 7px;
+    cursor: pointer;
   }
 `;
