@@ -7,9 +7,10 @@ const SearchBar = () => (
 
     <SearchTags>
       <input type="checkbox" id="tagsOnly"/>
-      <label for="tagsOnly">search in tags only</label>
+      <label htmlFor="tagsOnly">search in tags only</label>
     </SearchTags>
   </Container>
 );
+
 
 export default SearchBar;

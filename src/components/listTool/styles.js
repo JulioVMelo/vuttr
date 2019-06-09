@@ -12,8 +12,10 @@ export const Tool = styled.div`
   padding: 15px 15px;
   box-shadow: 0px 5px 7px rgba(0,0,0, 0.05);
   transition: all 0.5s;
+  margin-bottom: 30px;
 
   &:hover {
+    cursor: pointer;
     box-shadow : 0px 20px 25px rgba(0,0,0, 0.05);
   }
 
