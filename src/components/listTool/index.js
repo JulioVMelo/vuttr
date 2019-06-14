@@ -3,13 +3,13 @@ import { Container, Tool } from './styles';
 import RemoveImg from '../../assets/images/Icon-Delete-2px.svg';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ToolsActions from '../../store/actions/tools';
+import { Creators as ToolsActions } from '../../store/ducks/tools';
 
 class ListTool extends Component {
-  
-  constructor(props) {
-    super(props);
-    
+
+  componentDidMount() {
+    this.props.asyncListTools();    
+    console.log('props do vuttr', this.props);
   }
 
   render() {
@@ -29,7 +29,7 @@ class ListTool extends Component {
                 
                 <div className="tags">
                   {  tool.tags.map( tag => 
-                      <span>#{ tag }</span>
+                      <span key={Math.random()}>#{ tag }</span>
                     )
                   }
                 </div> 
