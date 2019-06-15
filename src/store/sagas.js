@@ -3,7 +3,16 @@ import api from '../services/api';
 
 // Remove a ferramenta da listagem
 function* asyncRemoveTool(action) {
-  yield put({ type: 'REMOVE_TOOL_SUCCESS', payload: {id: action.payload.id} });
+  try {
+    yield call(api.delete, `/tools/${action.payload.id}`);
+    
+  }catch (err) {
+    console.log('erro', err);
+  }
+
+  finally {
+    yield asyncListTools();
+  }
 }
 
 // Recebe a lista de ferramentas 
@@ -11,7 +20,7 @@ function* asyncListTools() {
   try {
     const response  = yield call(api.get, '/tools');
 
-    yield put({type: 'LIST_TOOLS', payload: response})
+    yield put({type: 'LIST_TOOLS_SUCCESS', payload: response})
     
   } catch (err) {
     console.log(err);
