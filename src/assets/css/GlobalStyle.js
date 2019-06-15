@@ -20,7 +20,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     /* Hack for better maintenance ( 10px == 1.0em ) */
     font-size: 62.5%;
-    font-family: "Source Sans Pro", sans-serif
+    font-family: "Source Sans Pro", sans-serif;
+    position: relative;
   }
 `;
 

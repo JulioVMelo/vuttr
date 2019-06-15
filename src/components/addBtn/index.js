@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from './styles';
 
-const AddTool = () => (
+const AddBtn = () => (
   <Button>Add</Button>
 );
 
-export default AddTool;
+export default AddBtn;
