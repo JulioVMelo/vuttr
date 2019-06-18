@@ -1,10 +1,16 @@
 import React from 'react';
 import { Container } from './styles';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as ToolsActions } from '../../store/ducks/tools';
 
-const panelAdd = () => (
+const panelAdd = ({toggleAddPanel}) => (
   <Container>
     <div className="container">
-      <h2>Add new tool</h2>
+      <header>
+        <h2>Add new tool</h2>
+        <span onClick={() => toggleAddPanel()}>&times;</span>
+      </header> 
       <div className="boxInput">
         <label>Name</label>
         <input type="text" placeholder="teste"/>
@@ -28,4 +34,10 @@ const panelAdd = () => (
   </Container>
 );
 
-export default panelAdd;
+const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);
+
+const mapStateToProps = state => ({
+  state,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(panelAdd);

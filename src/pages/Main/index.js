@@ -1,11 +1,12 @@
 import React from "react";
-import { Container, Header, ActionsList, AddTool } from "./styles";
+import { Container, Header, ActionsList } from "./styles";
 import AddBtn from "../../components/addBtn";
 import SearchBar from "../../components/searchBar";
 import ListTool from "../../components/listTool/";
 import PanelAdd from "../../components/panelAdd";
+import { connect } from 'react-redux';
 
-const Main = () => (
+const Main = ({state}) => (
   <Container>
     <Header>
       <h1>VUTTR</h1>
@@ -16,8 +17,18 @@ const Main = () => (
       <AddBtn />
     </ActionsList>
     <ListTool />
-    {/* <PanelAdd /> */}
+
+    {
+      state.tools.showPanelAdd &&
+        <PanelAdd />
+    }
+
   </Container>
 );
 
-export default Main;
+
+const mapStateToProps = state => ({
+  state,
+});
+
+export default connect(mapStateToProps)(Main);

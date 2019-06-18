@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     description: 'descricao',
     tags: [],
   }],
-  addIsShow: false
+  showPanelAdd: false
 };
 
 export default function tools(state = INITIAL_STATE, action) {
@@ -23,6 +23,11 @@ export default function tools(state = INITIAL_STATE, action) {
 
       return state.filter(tool => tool.id !== action.payload.id);
   
+    case "TOGGLE_ADD_PANEL":
+
+      const showPanelAdd = !state.showPanelAdd;
+      return {...state, showPanelAdd: showPanelAdd};
+      
     default:
       return state;
   }
@@ -41,6 +46,11 @@ export const Creators = {
 
   asyncListTools: () => ({
     type: "ASYNC_LIST_TOOLS",
+    payload: {}
+  }),
+
+  toggleAddPanel: () => ({
+    type: "TOGGLE_ADD_PANEL",
     payload: {}
   })
 };

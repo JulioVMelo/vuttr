@@ -9,8 +9,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
-
+  height: 100%;
   background-color: rgba(0,0,0, .6);
 
   .container {
@@ -21,12 +20,24 @@ export const Container = styled.div`
     padding: 15px;
     box-shadow: 0px 20px 25px rgba(0,0,0, .1);
 
-    h2 {
-      font-size: 2.6em;
-      font-weight: 600;
-      color: #170C3A;
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 30px;
+
+      h2 {
+        font-size: 2.6em;
+        font-weight: 600;
+        color: #170C3A;
+      }
+
+      span {
+        cursor: pointer;
+        font-size: 4.6em;
+      }
     }
+    
 
     .boxInput {
       display: flex;
