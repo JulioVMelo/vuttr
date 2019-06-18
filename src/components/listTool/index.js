@@ -8,15 +8,14 @@ import { Creators as ToolsActions } from '../../store/ducks/tools';
 class ListTool extends Component {
 
   componentDidMount() {
-    this.props.asyncListTools();    
-    console.log('props do vuttr', this.props);
+    this.props.asyncListTools(); 
   }
 
   render() {
     return(
       <Container>
           {
-            this.props.state.tools.map( tool => 
+            this.props.state.tools.data.map( tool => 
               <Tool key={tool.id}>
                 <div className="title">
                   <h1> { tool.title } </h1>

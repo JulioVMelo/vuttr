@@ -19,10 +19,11 @@ function* asyncRemoveTool(action) {
 function* asyncListTools() {
   try {
     const response  = yield call(api.get, '/tools');
-
     yield put({type: 'LIST_TOOLS_SUCCESS', payload: response})
     
   } catch (err) {
+
+    yield put({type: 'LIST_TOOLS_FAILURE'})
     console.log(err);
   }
 }
