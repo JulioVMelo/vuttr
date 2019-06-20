@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 
-const AddBtn = ({toggleAddPanel}) => (
-  <Button onClick={() => toggleAddPanel()}>Add</Button>
+const AddBtn = ({toggleAddPanel, name}) => (
+
+  <Button onClick={() => toggleAddPanel()}> {name} </Button>
+
 );
 
 const mapDispatchToProps = dispatch => bindActionCreators(ToolsActions, dispatch);

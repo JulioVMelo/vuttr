@@ -3,6 +3,11 @@ import { Container } from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
+import { Form, Input, } from '@rocketseat/unform';
+
+function handleSubmit(data) {
+  console.log(data);
+}
 
 const panelAdd = ({toggleAddPanel}) => (
   <Container>
@@ -11,25 +16,28 @@ const panelAdd = ({toggleAddPanel}) => (
         <h2>Add new tool</h2>
         <span onClick={() => toggleAddPanel()}>&times;</span>
       </header> 
-      <div className="boxInput">
-        <label>Name</label>
-        <input type="text" placeholder="teste"/>
-      </div>
-      <div className="boxInput">
-        <label>Link</label>
-        <input type="text" placeholder="teste"/>
-      </div>
-      <div className="boxInput">
-        <label>Description</label>
-        <input type="text" placeholder="teste"/>
-      </div>
-      <div className="boxInput">
-        <label>Tags</label>
-        <input type="text" placeholder="teste"/>
-      </div>
-      <div className="action">
-        <button>Save</button>
-      </div>
+      
+      <Form onSubmit={handleSubmit}>
+        <div className="boxInput">  
+          <Input label="Name" name="name"/>
+        </div>
+        
+        <div className="boxInput">
+          <Input label="Link" name="link"/>
+        </div>
+        
+        <div className="boxInput">
+          <Input label="Description" name="description"/>
+        </div>
+        
+        <div className="boxInput">
+          <Input label="Tags" name="tags"/>
+        </div>
+
+        <div className="action">
+          <button type="submit">Send</button>
+        </div>
+      </Form>
     </div>
   </Container>
 );

@@ -14,7 +14,7 @@ const Main = ({state}) => (
     </Header>
     <ActionsList>
       <SearchBar />
-      <AddBtn />
+      <AddBtn name="Add"/>
     </ActionsList>
     <ListTool />
 
