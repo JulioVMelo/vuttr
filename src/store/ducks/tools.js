@@ -52,5 +52,10 @@ export const Creators = {
   toggleAddPanel: () => ({
     type: "TOGGLE_ADD_PANEL",
     payload: {}
-  })
+  }),
+
+  addTool: (data) => ({
+    type: "ASYNC_ADD_TOOL",
+    payload: { data }
+  }),
 };

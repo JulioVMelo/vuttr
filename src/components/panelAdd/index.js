@@ -5,11 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Form, Input, } from '@rocketseat/unform';
 
-function handleSubmit(data) {
-  console.log(data);
-}
-
-const panelAdd = ({toggleAddPanel}) => (
+const panelAdd = ({toggleAddPanel, addTool}) => (
   <Container>
     <div className="container">
       <header>
@@ -17,9 +13,9 @@ const panelAdd = ({toggleAddPanel}) => (
         <span onClick={() => toggleAddPanel()}>&times;</span>
       </header> 
       
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={(data) => addTool(data)}>
         <div className="boxInput">  
-          <Input label="Name" name="name"/>
+          <Input label="Name" name="title"/>
         </div>
         
         <div className="boxInput">

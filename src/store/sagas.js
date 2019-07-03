@@ -28,10 +28,22 @@ function* asyncListTools() {
   }
 }
 
+function* asyncAddTool(action) {
+  console.log("Entrou no AsyncAddTool", action);
+  try {
+    yield action.payload.data.tags =  action.payload.data.tags.split(' ');
+    yield call(api.post, '/tools/', action.payload.data);
+    yield asyncListTools();
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // Trata todas as actions que o sagas está ouvindo
 export default function* root() {
   yield all([
     takeLatest('ASYNC_LIST_TOOLS', asyncListTools),
     takeLatest('ASYNC_REMOVE_TOOL', asyncRemoveTool),
+    takeLatest('ASYNC_ADD_TOOL', asyncAddTool)
   ]);
 }
