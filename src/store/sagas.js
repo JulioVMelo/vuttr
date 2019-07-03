@@ -19,20 +19,20 @@ function* asyncRemoveTool(action) {
 function* asyncListTools() {
   try {
     const response  = yield call(api.get, '/tools');
-    yield put({type: 'LIST_TOOLS_SUCCESS', payload: response})
+    yield put({type: 'LIST_TOOLS_SUCCESS', payload: response});
     
   } catch (err) {
 
-    yield put({type: 'LIST_TOOLS_FAILURE'})
+    yield put({type: 'LIST_TOOLS_FAILURE'});
     console.log(err);
   }
 }
 
 function* asyncAddTool(action) {
-  console.log("Entrou no AsyncAddTool", action);
   try {
     yield action.payload.data.tags =  action.payload.data.tags.split(' ');
     yield call(api.post, '/tools/', action.payload.data);
+    yield put({type: 'TOGGLE_ADD_PANEL'});
     yield asyncListTools();
   } catch(err) {
     console.log(err);

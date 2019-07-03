@@ -25,10 +25,11 @@ export const Tool = styled.div`
     justify-content: space-between;
     margin-bottom: 10px;
 
-    h1 {
+    a {
       text-decoration: underline;
       font-size: 2.4em;
       color: #365DF0;
+      font-weight: 900;
     }
 
     img {
