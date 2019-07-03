@@ -18,7 +18,7 @@ class ListTool extends Component {
             this.props.state.tools.data.map( tool => 
               <Tool key={tool.id}>
                 <div className="title">
-                  <a href={tool.link} target="_blank"> { tool.title } </a>
+                  <a href={tool.link} target="_blank" rel="noopener noreferrer"> { tool.title } </a>
                   <img  src={ RemoveImg } onClick={() => this.props.removeTool(tool.id)} alt="button remove"/>
                 </div>
 

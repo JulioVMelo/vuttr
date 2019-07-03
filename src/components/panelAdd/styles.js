@@ -39,7 +39,6 @@ export const Container = styled.div`
       }
     }
     
-
     .boxInput {
       display: flex;
       flex-direction: column;
@@ -64,9 +63,15 @@ export const Container = styled.div`
           border: 1px solid #DEDCE1;
           background-color: #EBEAED;
         }
+        
         &::placeholder {
           color: #B1ADB9;
         }
+      }
+
+      span {
+        color: #e74c3c;
+        font-size: 14px;
       }
     }
 
@@ -88,6 +93,7 @@ export const Container = styled.div`
         &:hover {
           background-color: #2F55CC;
         }
+
         &:active {
           background-color: #244AA8;
         }
