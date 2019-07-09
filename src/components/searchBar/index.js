@@ -1,9 +1,13 @@
 import React from 'react';
 import { Container, SearchTags } from './styles';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as ToolsActions } from "../../store/ducks/tools";
 
-const SearchBar = () => (
+
+const SearchBar = ({searchTool}) => (
   <Container>
-    <input type="text" placeholder="search"/>
+    <input type="text" onChange={(e) => searchTool(e.target.value)} placeholder="search"/>
 
     <SearchTags>
       <input type="checkbox" id="tagsOnly"/>
@@ -13,4 +17,11 @@ const SearchBar = () => (
 );
 
 
-export default SearchBar;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ToolsActions, dispatch);
+
+const mapStateToProps = state => ({
+  state
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     link: 'http://',
     tags: [],
   }],
-  showPanelAdd: false
+  showPanelAdd: false,
 };
 
 export default function tools(state = INITIAL_STATE, action) {
@@ -28,8 +28,12 @@ export default function tools(state = INITIAL_STATE, action) {
 
       const showPanelAdd = !state.showPanelAdd;
       return {...state, showPanelAdd: showPanelAdd};
-      
-    default:
+    
+    case "LIST_TOOLS_SEARCH_SUCCESS":
+
+      return {data: action.payload.data}
+
+      default:
       return state;
   }
 }
@@ -59,4 +63,9 @@ export const Creators = {
     type: "ASYNC_ADD_TOOL",
     payload: { data }
   }),
+
+  searchTool: (query) => ({
+    type: "ASYNC_SEARCH_TOOL",
+    payload: { query }
+  })
 };

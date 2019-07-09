@@ -39,11 +39,21 @@ function* asyncAddTool(action) {
   }
 }
 
+function* asyncSearchTool(action) {
+  try {
+    const response = yield call(api.get, `/tools/?q=${action.payload.query}`);
+    yield put ({type: 'LIST_TOOLS_SEARCH_SUCCESS', payload: response})
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // Trata todas as actions que o sagas está ouvindo
 export default function* root() {
   yield all([
     takeLatest('ASYNC_LIST_TOOLS', asyncListTools),
     takeLatest('ASYNC_REMOVE_TOOL', asyncRemoveTool),
-    takeLatest('ASYNC_ADD_TOOL', asyncAddTool)
+    takeLatest('ASYNC_ADD_TOOL', asyncAddTool),
+    takeLatest('ASYNC_SEARCH_TOOL', asyncSearchTool)
   ]);
 }
