@@ -1,4 +1,4 @@
-import { takeLatest, put, all, call } from 'redux-saga/effects';
+import { takeLatest, put, all, call, select } from 'redux-saga/effects';
 import api from '../services/api';
 
 // Remove a ferramenta da listagem
@@ -41,8 +41,17 @@ function* asyncAddTool(action) {
 
 function* asyncSearchTool(action) {
   try {
-    const response = yield call(api.get, `/tools/?q=${action.payload.query}`);
-    yield put ({type: 'LIST_TOOLS_SEARCH_SUCCESS', payload: response})
+
+    const {tools} = yield select();  
+      
+    if(tools.onlyTags) {
+      const response = yield call(api.get, `/tools/?tags_like=${action.payload.query}`);
+      yield put ({type: 'LIST_TOOLS_SEARCH_SUCCESS', payload: response});
+    } else {
+      const response = yield call(api.get, `/tools/?q=${action.payload.query}`);
+      yield put ({type: 'LIST_TOOLS_SEARCH_SUCCESS', payload: response});
+    }
+
   } catch(err) {
     console.log(err);
   }

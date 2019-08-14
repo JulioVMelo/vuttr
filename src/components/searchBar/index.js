@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Creators as ToolsActions } from "../../store/ducks/tools";
 
-
-const SearchBar = ({searchTool}) => (
+const SearchBar = ({searchTool, toggleTags}) => (
   <Container>
-    <input type="text" onChange={(e) => searchTool(e.target.value)} placeholder="search"/>
+      <input type="text" name="query" onChange={(e) => searchTool(e.target.value)} placeholder="search"/>
 
-    <SearchTags>
-      <input type="checkbox" id="tagsOnly"/>
-      <label htmlFor="tagsOnly">search in tags only</label>
-    </SearchTags>
+      <SearchTags>
+        <input name="tags" type="checkbox" id="tagsOnly" onChange={(e) => toggleTags(e.target.checked)} />
+        <label htmlFor="tagsOnly">search in tags only</label>
+      </SearchTags>
   </Container>
 );
 

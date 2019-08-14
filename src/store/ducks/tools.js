@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     tags: [],
   }],
   showPanelAdd: false,
+  onlyTags: false,
 };
 
 export default function tools(state = INITIAL_STATE, action) {
@@ -29,9 +30,12 @@ export default function tools(state = INITIAL_STATE, action) {
       const showPanelAdd = !state.showPanelAdd;
       return {...state, showPanelAdd: showPanelAdd};
     
+    case "TOGGLE_TAGS":
+      
+      return {...state, onlyTags: action.payload.tags};
+  
     case "LIST_TOOLS_SEARCH_SUCCESS":
-
-      return {data: action.payload.data}
+      return {...state, data: action.payload.data}
 
       default:
       return state;
@@ -67,5 +71,11 @@ export const Creators = {
   searchTool: (query) => ({
     type: "ASYNC_SEARCH_TOOL",
     payload: { query }
-  })
+  }),
+
+  toggleTags: (tags) => ({
+    type: "TOGGLE_TAGS",
+    payload: {tags},
+  }),
+
 };
